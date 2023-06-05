@@ -1,5 +1,4 @@
 Flask==2.3.2
 transformers==4.29.2
-torch==2.0.1+cpu -f https://download.pytorch.org/whl/cpu/torch_stable.html
 gunicorn==20.1.0
 pytest==7.3.1
