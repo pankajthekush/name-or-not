@@ -1,2 +1,26 @@
 env/
 .git/
+# Exclude development and testing files
+.dockerignore
+.git
+.vscode
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+*.pyi
+*.pytest_cache
+
+# Exclude local environment files
+.env
+venv/
+.env*
+
+# Exclude build artifacts
+dist/
+build/
+*.egg-info/
+
+# Exclude version control files
+*.bak
+*.swp

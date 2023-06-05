@@ -1,7 +1,8 @@
 version: '2.4'
 
 services:
-  app:
+  nonot:
+    image: pkumdev/nameornot
     build:
       context: .
       dockerfile: Dockerfile
@@ -14,3 +15,26 @@ services:
       options:
         max-size: "10m"
         max-file: "3"
+    networks:
+      - xtnet
+
+  nonot.nginx:
+    image: nginx:1.22.0
+    volumes:
+      - ./wait-for-it.sh:/wait-for-it.sh
+      -  ./nonot.conf:/etc/nginx/conf.d/default.conf
+    command: >
+          /bin/sh -c "/wait-for-it.sh -t 0 nonot:8000 -- echo ur matcher is up;
+                      service nginx start; tail -f /dev/null"
+    ports:
+      - 80
+    environment:
+      - NGINX_HOST=foobar.com
+      - NGINX_PORT=80
+    networks:
+      - xtnet
+
+
+networks:
+  xtnet:
+    external: true
