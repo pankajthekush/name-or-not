@@ -9,7 +9,6 @@ model.to(device)
 tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
 
 def get_predicted_label(input_text):
-
     input_encoding = tokenizer(input_text, truncation=True, padding=True, return_tensors='pt')
     input_ids = input_encoding['input_ids'].to(device)
     attention_mask = input_encoding['attention_mask'].to(device)
