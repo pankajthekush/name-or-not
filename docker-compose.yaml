@@ -27,7 +27,7 @@ services:
           /bin/sh -c "/wait-for-it.sh -t 0 nonot:8000 -- echo ur matcher is up;
                       service nginx start; tail -f /dev/null"
     ports:
-      - 80
+      - 81:80
     environment:
       - NGINX_HOST=foobar.com
       - NGINX_PORT=80
